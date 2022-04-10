@@ -1,0 +1,4 @@
+# Project exclude paths
+/JDK8/target/
+/JDK8/JDK8.iml
+/.idea
