@@ -1,4 +1,4 @@
-package com.ah.interface_test;
+package com.ah.test;
 
 /**
  * <p>

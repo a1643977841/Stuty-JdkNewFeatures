@@ -29,6 +29,15 @@ public class Employee {
     }
 
     public Employee() {
+        System.out.println("构造器调用");
+    }
+
+    public Employee(int id) {
+        this.id = id;
+    }
+    public Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public int getId() {
