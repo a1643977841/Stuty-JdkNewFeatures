@@ -2,7 +2,9 @@ package com.ah.lambda;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -95,7 +97,6 @@ public class LambdaTest {
         };
         con1.accept("lambda--我爱北京天安门");
     }
-
     /**
      * 语法格式五 : lambda需要两个或以上参数，多条执行语句，并且可以有返回值
      */
