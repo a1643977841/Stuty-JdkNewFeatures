@@ -2,16 +2,10 @@ package com.ah.new_date;
 
 import org.junit.Test;
 
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
-import static java.math.RoundingMode.HALF_UP;
+import java.time.temporal.TemporalAdjuster;
 
 /**
  * <p>
@@ -189,6 +183,35 @@ public class Demo1 {
      */
     @Test
     public void testTemporalAdjuster() {
+        LocalDateTime now = LocalDateTime.now();
+        // 将日期调整到 下一个月的第一天 操作
+        TemporalAdjuster firstDayOfNextMonth = temporal -> {
+            // temporal要调整的时间
+            LocalDateTime dateTime = (LocalDateTime) temporal;
+            return dateTime.plusMonths(1).withDayOfMonth(1);
+        };
+        LocalDateTime with = now.with(firstDayOfNextMonth);
+        System.out.println("with = " + with);
+    }
 
+    /**
+     * 带时区日期
+     */
+    @Test
+    public void testZoneDate() {
+        // 获取所有时区id
+        //ZoneId.getAvailableZoneIds().forEach(System.out::println);
+        // 不带时区的
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println("不带时区localDateTime = " + localDateTime);
+        // 带时区(世界标准时间)
+        ZonedDateTime bz = ZonedDateTime.now(Clock.systemUTC());
+        System.out.println("世界标准时间bz = " + bz);
+        // 不带时区的 使用的是系统默认的时区
+        ZonedDateTime now = ZonedDateTime.now();
+        System.out.println("now = " + now);
+        // 指定时区
+        ZonedDateTime americaDate = ZonedDateTime.now(ZoneId.of("America/Vancouver"));
+        System.out.println("AmericaDate = " + americaDate);
     }
 }
